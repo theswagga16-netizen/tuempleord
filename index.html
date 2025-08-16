@@ -1,0 +1,65 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0:""
+  </title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<script>
+  const form = document.getElementById('vacante-form');
+  const listado = document.getElementById('vacantes-publicadas');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const titulo = document.getElementById('titulo').value;
+    const empresa = document.getElementById('empresa').value;
+    const descripcion = document.getElementById('descripcion').value;
+    const link = document.getElementById('link').value;
+
+    const vacanteHTML = `
+      <div class="job fade-in">
+        <h3>${titulo.toUpperCase()}</h3>
+        <h4>${empresa}</h4>
+        <p>${descripcion}</p>
+        <a href="${link}" class="btn-link" target="_blank">Aplicar Ahora</a>
+      </div>
+    `;
+
+    listado.innerHTML += vacanteHTML;
+    form.reset();
+  });
+</script>
+
+<body>
+  <header>
+    <h1>Ofertas de EMPLEO</h1>
+    <p>Encuentra tu próximo trabajo aquí</p>
+  </header>
+
+  <main>
+    <section id="job-listings">
+      <!-- Aquí se mostrarán las ofertas -->
+    </section>
+
+    <section id="add-job">
+      <h2>Publicar una oferta</h2>
+      <section id="publicar-vacante">
+  <h2>PUBLICAR UNA VACANTE</h2>
+  <form id="vacante-form">
+    <input type="text" id="titulo" placeholder="Título del empleo" required>
+    <input type="text" id="empresa" placeholder="Nombre de la empresa" required>
+    <textarea id="descripcion" placeholder="Descripción del empleo" rows="4" required></textarea>
+    <input type="url" id="link" placeholder="Enlace de aplicación (https://...)" required>
+    <button type="submit">Publicar Vacante</button>
+  </form>
+</section>
+
+<section id="vacantes-publicadas">
+  <h2>VACANTES DISPONIBLES</h2>
+  <!-- Aquí se mostrarán las vacantes -->
+</section>
+
