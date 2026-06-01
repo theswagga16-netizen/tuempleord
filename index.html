@@ -73,3 +73,88 @@
     </a>
   </p>
 </section>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ofertas de Empleo - Tu Temple Ord</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4919733211261456" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Ofertas de EMPLEO</h1>
+    <p>Encuentra tu próximo trabajo aquí</p>
+  </header>
+
+  <main>
+    <section id="job-listings"></section>
+
+    <section id="add-job">
+      <section id="publicar-vacante">
+        <h2>Publicar Nueva Vacante</h2>
+        <form id="vacante-form">
+          <label for="titulo">Título del Puesto:</label>
+          <input type="text" id="titulo" required>
+          
+          <label for="empresa">Empresa:</label>
+          <input type="text" id="empresa" required>
+          
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" required></textarea>
+          
+          <label for="link">Link de Aplicación:</label>
+          <input type="url" id="link" required>
+          
+          <button type="submit">Publicar Vacante</button>
+        </form>
+      </section>
+    </section>
+
+    <section id="vacantes-publicadas">
+      <h2>VACANTES DISPONIBLES</h2>
+      
+      <article class="oferta-empleo">
+        <h3>Auxiliar de Tienda</h3>
+        <p><strong>Empresa:</strong> Bravo</p>
+        <p><strong>Ubicación:</strong> Santo Domingo Este</p>
+        <p><strong>Descripción:</strong> La misión del puesto es realizar el proceso de cobro de los productos adquiridos por el cliente, apegado a los procedimientos de cobro y servicio al cliente establecidos.</p>
+        <p><strong>Requisitos:</strong> Graduado de Bachiller, conocimientos en manejo de efectivo, 1 o 2 años de experiencia en puestos similares.</p>
+        <p><strong>Beneficios:</strong> Oportunidad de empleo.</p>
+        <p>
+          <a href="https://supermercadosbravo.talentclue.com/es/node/add/cv/job/118544010/company/21487749/4590?clicked_button=apply_manually" class="btn-link" target="_blank">Ver oferta completa y aplicar</a>
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('vacante-form');
+    const listado = document.getElementById('vacantes-publicadas');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const titulo = document.getElementById('titulo').value;
+      const empresa = document.getElementById('empresa').value;
+      const descripcion = document.getElementById('descripcion').value;
+      const link = document.getElementById('link').value;
+
+      const vacanteHTML = `
+        <article class="oferta-empleo fade-in">
+          <h3>${titulo.toUpperCase()}</h3>
+          <h4>${empresa}</h4>
+          <p>${descripcion}</p>
+          <a href="${link}" class="btn-link" target="_blank">Aplicar Ahora</a>
+        </article>
+      `;
+
+      listado.innerHTML += vacanteHTML;
+      form.reset();
+    });
+  </script>
+</body>
+</html>
