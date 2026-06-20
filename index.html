@@ -1,78 +1,3 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="es">
-<head><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"
-     crossorigin="anonymous"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0:""
-  </title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<script>
-  const form = document.getElementById('vacante-form');
-  const listado = document.getElementById('vacantes-publicadas');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const titulo = document.getElementById('titulo').value;
-    const empresa = document.getElementById('empresa').value;
-    const descripcion = document.getElementById('descripcion').value;
-    const link = document.getElementById('link').value;
-
-    const vacanteHTML = `
-      <div class="job fade-in">
-        <h3>${titulo.toUpperCase()}</h3>
-        <h4>${empresa}</h4>
-        <p>${descripcion}</p>
-        <a href="${link}" class="btn-link" target="_blank">Aplicar Ahora</a>
-      </div>
-    `;
-
-    listado.innerHTML += vacanteHTML;
-    form.reset();
-  });
-</script>
-
-<body>
-  <header>
-    <h1>Ofertas de EMPLEO</h1>
-    <p>Encuentra tu próximo trabajo aquí</p>
-  </header>
-
-  <main>
-    <section id="job-listings">
-      <!-- Aquí se mostrarán las ofertas -->
-    </section>
-
-    <section id="add-job">
-     
-      <section id="publicar-vacante">
-  
-  
-  </form>
-</section>
-
-<section id="vacantes-publicadas">
-  <h2>VACANTES DISPONIBLES</h2>
-  <!-- Aquí se mostrarán las vacantes -->
-</section>
-<head><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4919733211261456"
-     crossorigin="anonymous"></script>
-    </head>
-<section class="oferta-empleo">
-  <h2>Vacante: Auxiliar de Tienda</h2>
-  <p><strong>Empresa:</strong> Bravo</p>
-  <p><strong>Ubicación:</strong> Santo Domingo Este</p>
-  <p><strong>Descripción:</strong> La misión del puesto es realizar el proceso de cobro de los productos adquiridos por el cliente, apegado a los procedimientos de cobro y servicio al cliente establecidos por la empresa. También debe dar soporte en el llenado de góndolas del área asignada con la variedad de productos que se ofrecen.</p>
-  <p><strong>Requisitos:</strong> Graduado de Bachiller, conocimientos en manejo de efectivo, 1 o 2 años de experiencia en puestos similares.</p>
-  <p><strong>Beneficios:</strong> Oportunidad de empleo.</p>
-  <p><strong>Aplicar aquí:</strong> 
-    <a href="https://supermercadosbravo.talentclue.com/es/node/add/cv/job/118544010/company/21487749/4590?clicked_button=apply_manually" target="_blank">
-      Ver oferta completa y aplicar
-    </a>
-  </p>
-</section>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -91,8 +16,6 @@
   </header>
 
   <main>
-    <section id="job-listings"></section>
-
     <section id="add-job">
       <section id="publicar-vacante">
         <h2>Publicar Nueva Vacante</h2>
@@ -119,14 +42,28 @@
       
       <article class="oferta-empleo">
         <h3>Auxiliar de Tienda</h3>
-        <p><strong>Empresa:</strong> Bravo</p>
+        <h4>Bravo</h4>
         <p><strong>Ubicación:</strong> Santo Domingo Este</p>
         <p><strong>Descripción:</strong> La misión del puesto es realizar el proceso de cobro de los productos adquiridos por el cliente, apegado a los procedimientos de cobro y servicio al cliente establecidos.</p>
         <p><strong>Requisitos:</strong> Graduado de Bachiller, conocimientos en manejo de efectivo, 1 o 2 años de experiencia en puestos similares.</p>
         <p><strong>Beneficios:</strong> Oportunidad de empleo.</p>
-        <p>
-          <a href="https://supermercadosbravo.talentclue.com/es/node/add/cv/job/118544010/company/21487749/4590?clicked_button=apply_manually" class="btn-link" target="_blank">Ver oferta completa y aplicar</a>
-        </p>
+        <a href="https://supermercadosbravo.talentclue.com/es/node/add/cv/job/118544010/company/21487749/4590?clicked_button=apply_manually" class="btn-link" target="_blank">Ver oferta completa y aplicar</a>
+      </article>
+
+      <article class="oferta-empleo">
+        <h3>Oferta de Empleo - CCN</h3>
+        <h4>CCN</h4>
+        <p><strong>Ubicación:</strong> República Dominicana</p>
+        <p><strong>Descripción:</strong> Vacante disponible publicada en Aplica CCN. Regístrate y aplica en línea.</p>
+        <a href="https://aplicaccn.com/registrarme/884eacd4-cfbd-4e97-b417-3904fed09764" target="_blank" class="btn-link">Aplicar Ahora</a>
+      </article>
+
+      <article class="oferta-empleo">
+        <h3>Oficial Cuentas por Pagar</h3>
+        <h4>Asociación La Nacional de Ahorros y Préstamos</h4>
+        <p><strong>Ubicación:</strong> Santo Domingo, República Dominicana</p>
+        <p><strong>Descripción:</strong> Vacante para Oficial de Cuentas por Pagar. Regístrate y aplica en línea.</p>
+        <a href="https://lanacional.talentclue.com/es/node/add/cv/job/126387554/company/6132302/4590?clicked_button=apply_manually" target="_blank" class="btn-link">Aplicar Ahora</a>
       </article>
     </section>
   </main>
@@ -158,22 +95,3 @@
   </script>
 </body>
 </html>
-<div class="job-card">
-  <h2>Oferta de Empleo - CCN</h2>
-  <p><strong>Empresa:</strong> CCN</p>
-  <p><strong>Ubicación:</strong> República Dominicana</p>
-  <p><strong>Descripción:</strong> Vacante disponible publicada en Aplica CCN. Regístrate y aplica en línea.</p>
-  <a href="https://aplicaccn.com/registrarme/884eacd4-cfbd-4e97-b417-3904fed09764" target="_blank" class="apply-button">
-    Aplicar Ahora
-  </a>
-</div><div class="job-card">
-  <h2>Oferta de Empleo - Oficial Cuentas por Pagar</h2>
-  <p><strong>Empresa:</strong> Asociación La Nacional de Ahorros y Préstamos</p>
-  <p><strong>Ubicación:</strong> Santo Domingo, República Dominicana</p>
-  <p><strong>Descripción:</strong> Vacante para Oficial de Cuentas por Pagar. Regístrate y aplica en línea.</p>
-  <a href="https://lanacional.talentclue.com/es/node/add/cv/job/126387554/company/6132302/4590?clicked_button=apply_manually" target="_blank" class="apply-button">
-    Aplicar Ahora
-  </a>
-</div>
-
-         
