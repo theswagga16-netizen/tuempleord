@@ -4,15 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Encuentra ofertas de empleo en República Dominicana. Publicar y aplicar a las mejores vacantes disponibles en tu área. Tu Temple Ord - Portal de empleos.">
-  <meta name="keywords" content="empleos, vacantes, trabajos, República Dominicana, ofertas de empleo, buscar trabajo, portal de empleos">
+  <meta name="keywords" content="empleos, vacantes, trabajos, República Dominicana, ofertas de empleo, buscar trabajo, portal de empleos, puestos disponibles, oportunidades laborales">
   <meta name="author" content="Tu Temple Ord">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Ofertas de Empleo - Tu Temple Ord">
   <meta property="og:description" content="Encuentra tu próximo trabajo en República Dominicana. Publica ofertas de empleo gratis.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#c0392b">
+  <meta name="google-site-verification" content="">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // Reemplaza G-XXXXXXXXXX con tu ID de Google Analytics
+    // gtag('config', 'G-XXXXXXXXXX');
+  </script>
   
-  <title>Ofertas de Empleo - Tu Temple Ord</title>
+  <title>Ofertas de Empleo - Tu Temple Ord | Busca y Publica Vacantes en RD</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4919733211261456" crossorigin="anonymous"></script>
@@ -43,19 +53,19 @@
         <h2>Publicar Nueva Vacante</h2>
         <form id="vacante-form">
           <label for="titulo">Título del Puesto:</label>
-          <input type="text" id="titulo" required>
+          <input type="text" id="titulo" placeholder="Ej: Desarrollador Web" required>
           
           <label for="empresa">Empresa:</label>
-          <input type="text" id="empresa" required>
+          <input type="text" id="empresa" placeholder="Nombre de tu empresa" required>
           
           <label for="ubicacion">Ubicación:</label>
-          <input type="text" id="ubicacion" placeholder="Ciudad o provincia" required>
+          <input type="text" id="ubicacion" placeholder="Ciudad o provincia (Ej: Santo Domingo)" required>
           
           <label for="descripcion">Descripción:</label>
-          <textarea id="descripcion" placeholder="Detalles de la vacante" required></textarea>
+          <textarea id="descripcion" placeholder="Detalles de la vacante, responsabilidades principales..." required></textarea>
           
           <label for="requisitos">Requisitos:</label>
-          <textarea id="requisitos" placeholder="Requisitos necesarios" required></textarea>
+          <textarea id="requisitos" placeholder="Experiencia necesaria, educación, habilidades..." required></textarea>
           
           <label for="link">Link de Aplicación:</label>
           <input type="url" id="link" placeholder="https://..." required>
@@ -63,6 +73,11 @@
           <button type="submit">Publicar Vacante</button>
         </form>
       </section>
+    </section>
+
+    <!-- Buscador de ofertas -->
+    <section id="search-section">
+      <input type="text" id="search-input" placeholder="Buscar ofertas por título, empresa o ubicación...">
     </section>
 
     <!-- ANUNCIO 2: Antes de la lista de vacantes (Rectangle ad) -->
@@ -188,7 +203,8 @@
     <p>&copy; 2024 Tu Temple Ord. Todos los derechos reservados.</p>
     <p>
       <a href="privacy-policy.html" target="_blank">Política de Privacidad</a> | 
-      <a href="terms.html" target="_blank">Términos de Servicio</a>
+      <a href="terms.html" target="_blank">Términos de Servicio</a> |
+      <a href="#contacto">Contacto</a>
     </p>
   </footer>
 
@@ -210,8 +226,15 @@
             <button class="btn-eliminar" onclick="eliminarOferta('${oferta.id}')">Eliminar</button>
           </article>
         `;
-        listado.innerHTML += vacanteHTML;
+        listado.appendChild(crearElemento(vacanteHTML));
       });
+    }
+
+    // Crear elemento DOM desde HTML string
+    function crearElemento(html) {
+      const div = document.createElement('div');
+      div.innerHTML = html.trim();
+      return div.firstChild;
     }
 
     // Guardar nueva oferta
@@ -256,7 +279,7 @@
         </article>
       `;
 
-      listado.innerHTML += vacanteHTML;
+      listado.appendChild(crearElemento(vacanteHTML));
       form.reset();
       
       alert('¡Oferta publicada exitosamente!');
@@ -270,11 +293,32 @@
         localStorage.setItem('ofertas', JSON.stringify(nuevasOfertas));
         
         const elemento = document.querySelector(`[data-id="${id}"]`);
-        elemento.remove();
+        if (elemento) {
+          elemento.remove();
+        }
         
         alert('Oferta eliminada');
       }
     }
+
+    // Función de búsqueda
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('keyup', function() {
+      const searchTerm = this.value.toLowerCase();
+      const ofertas = document.querySelectorAll('.oferta-empleo');
+      
+      ofertas.forEach(oferta => {
+        const titulo = oferta.querySelector('h3').textContent.toLowerCase();
+        const empresa = oferta.querySelector('h4').textContent.toLowerCase();
+        const ubicacion = oferta.querySelector('p').textContent.toLowerCase();
+        
+        if (titulo.includes(searchTerm) || empresa.includes(searchTerm) || ubicacion.includes(searchTerm)) {
+          oferta.style.display = 'block';
+        } else {
+          oferta.style.display = 'none';
+        }
+      });
+    });
 
     // Cargar ofertas al iniciar
     window.addEventListener('load', cargarOfertas);
